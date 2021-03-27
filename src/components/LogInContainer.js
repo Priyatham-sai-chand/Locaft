@@ -20,6 +20,84 @@ const AppSide = styled.div`
   justify-content: flex-end;
  
 `;
+const AppForm = styled.div`
+
+  width: 50%;
+  background-color: #ffffff;
+  padding: 25px 40px;
+  overflow: auto;
+
+`;
+const PageSwitcher = styled.div`
+
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10%;
+
+`;
+const BannerHeading = styled.h1`
+
+  position: relative;
+  text-align: center;
+  font-family: Ubuntu;
+  font-size: 5rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: lowercase;
+`;
+const PlaneContainer = styled.div`
+
+  width:100px;
+  display:flex;
+  margin-bottom: 50px;
+  align-content: flex-start;
+  justify-content: flex-start;
+
+`;
+const TextContainer = styled.p`
+
+  width: 50%;
+  background-color: #66bfbf;
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-end;
+ 
+`;
+
+const BannerText = styled.p`
+  color:white;
+  font-size: 1.25em;
+  font-style:italic;
+
+
+`;
+const SkyContainer = styled.div`
+  margin-top: 600px;
+  width: 100%;
+  background-size: 100%;
+`;
+const PageSwitcher = styled(NavLink)`
+  background-color: #4C5D72;
+  color: white;
+  padding: 10px 25px;
+  cursor: pointer;
+  font-size: .9em;
+  border: none;
+  outline: none;
+  display: inline-block;
+  text-decoration: none;
+
+  ${props = props.active ? css`
+
+  background-color: #66bfbf;
+  color: white;
+  `: css``}
+
+
+
+
+`;
 
 const LogInContainer = (props) => {
     return (
