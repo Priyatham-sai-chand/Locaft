@@ -4,6 +4,7 @@ import Axios from "axios";
 import ErrorNotice from "./ErrorNotice";
 import { Link, useHistory, withRouter } from "react-router-dom";
 
+import {Button, FormCenter, FormField, FormLabel, FormInput, FormLink  } from './miscellaneous/Styles'
 const Login = () => {
     
   const [email, setEmail] = useState();
@@ -34,27 +35,34 @@ const Login = () => {
   }; 
         return (
           
-        <div className="FormCenter">
+        <FormCenter>
           {error && (
         <ErrorNotice message={error} clearError={() => setError(undefined)} />
       )}
             <form  className="FormFields" onSubmit={submit}>
-            <div className="FormField">
-                <label className="FormField__Label" htmlFor="email">E-Mail Address</label>
-                <input type="email" id="email" className="FormField__Input" value={ email } placeholder="Enter your email" name="email" onChange={(e) => setEmail(e.target.value)} />
-              </div>
+            <FormField>
+                <FormLabel htmlFor="email">E-Mail Address</FormLabel>
+                <FormInput type="email" id="email"  value={ email } placeholder="enter your email" name="email" onChange={(e) => setEmail(e.target.value)} />
+              </FormField>
 
-              <div className="FormField">
-                <label className="FormField__Label" htmlFor="password">Password</label>
-                <input type="password" id="password" className="FormField__Input" value={ password } placeholder="Enter your password" name="password" onChange={(e) => setPassword(e.target.value)} />
-              </div>
+              <FormField>
+                <FormLabel htmlFor="password">Password</FormLabel>
+                <FormInput type="password" id="password" value={ password } placeholder="Enter your password" name="password" onChange={(e) => setPassword(e.target.value)} />
+              </FormField>
 
-              <div className="FormField">
-                  <button className="FormField__Button mr-20" >Sign In</button> <Link exact to="/register" className="FormField__Link">Not a member?</Link>
-              </div>
+              <FormField>
+  
+              <Button
+                  type="submit"
+                  radiuscolor="#009578"
+                  textcolor="#009578"
+                  hovercolor="#009578"
+                  hovertextcolor="white"
+                  >Sign In</Button> <FormLink exact to="/register" className="FormField__Link">Not a member?</FormLink>
+              </FormField>
             </form>
             
-          </div>
+          </FormCenter>
         );
     }
 

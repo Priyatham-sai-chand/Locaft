@@ -15,7 +15,7 @@ const Header = styled.header`
   justify-content: space-between;
   align-items: center;
   transition: 0.6s;
-  padding: 10px 15px;
+  padding: 5px 15px;
   z-index: 100000;
   font-family: Ubuntu;
 
@@ -126,7 +126,7 @@ export default function NavBar() {
         <List>
           <ListElement><Anchor href="/">Home</Anchor></ListElement>
           <ListElement><Anchor href="/#about-us">About</Anchor></ListElement>
-          <ListElement><Anchor href="/#services">Services</Anchor></ListElement>
+          <ListElement><Anchor href="/pricing">Pricing</Anchor></ListElement>
           <ListElement><Anchor href="/#footer">Contact us</Anchor></ListElement>
           {userData.user ? (
             <React.Fragment>
