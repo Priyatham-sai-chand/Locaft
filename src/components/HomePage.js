@@ -94,7 +94,6 @@ export default function HomePage() {
   return (
 
     <div className="HomePage">
-      <NavBar />
 
       <ColoredSection >
 
@@ -229,6 +228,7 @@ export default function HomePage() {
       
       </ColoredSection>
       <Sidebar />
+      <NavBar />
 
       <div id="footer">
         <Footer />
