@@ -1,10 +1,12 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
+import { Link } from 'react-router-dom'
 import styled from 'styled-components';
-
+import UserContext from '../context/UserContext';
 const StyledMenu = styled.nav`
 
   display: flex;
   flex-direction: column;
+  position:fixed !important;
   justify-content: center;
   background: #EFFFFA;
   transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(-100%)'};
@@ -41,9 +43,10 @@ const StyledMenu = styled.nav`
   }
 `
 
-const Menu = ({ open }) => {
+const Menu = (props) => {
+  const { userData, setUserData } = useContext(UserContext);
   return (
-    <StyledMenu open={open}>
+    <StyledMenu open={props.open}>
       <a href="/#about-us">
         <span role="img" aria-label="about us">💁🏻‍♂️</span>
         About us
@@ -56,12 +59,34 @@ const Menu = ({ open }) => {
         <span role="img" aria-label="contact us">📩</span>
         Contact
         </a>
+        
+      {userData.user ? (
+      <Link >
+        <span role="img" aria-label="{userData.user.username}">📩</span>
+        {userData.user.username}
+        </Link>
+            
+        
+          ):(
+<React.Fragment>
+      <a href="/user/register">
+        <span role="img" aria-label="Register">📩</span>
+        Register
+        </a>
+      <a href="/user/login">
+        <span role="img" aria-label="Login">📩</span>
+        Login
+        </a>
+</React.Fragment>
+        )
+      
+      }
     </StyledMenu>
   )
 }
 
 const StyledBurger = styled.button`
-  position: absolute;
+  position: fixed;
   top: 5%;
   left: 2rem;
   display: flex;
@@ -77,6 +102,10 @@ const StyledBurger = styled.button`
 
   &:focus {
     outline: none;
+  }
+  &:hover{
+  background: transparent;
+
   }
 
   div {
@@ -117,15 +146,15 @@ const Burger = ({ open, setOpen }) => {
 }
 
 
-const Sidebar = () => {
-  const [open, setOpen] = React.useState(false);
+const Sidebar = (props) => {
+  const [open, setOpen] = useState(false);
   const node = React.useRef();
   return (
     <div>
     
       <div ref={node}>
         <Burger open={open} setOpen={setOpen} />
-        <Menu open={open} setOpen={setOpen} />
+        <Menu open={open} setOpen={setOpen} logout={props.logout} />
       </div>
     </div>
   )  
