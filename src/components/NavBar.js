@@ -1,4 +1,4 @@
-import React, {useContext,useEffect } from 'react';
+import React, { useState,useContext,useEffect } from 'react';
 import { Link } from "react-router-dom";
 import  UserContext  from "../context/UserContext";
 import styled,{ css } from 'styled-components';
@@ -92,7 +92,7 @@ const Linker = styled(Link)`
 
 export default function NavBar() {
   const { userData, setUserData } = useContext(UserContext);
-  
+  const [scrolled, setScrolled] = useState(); 
   const logout = () => {
     setUserData({
       token: undefined,
@@ -102,7 +102,6 @@ export default function NavBar() {
   };
   
   
-    const [scrolled,setScrolled]=React.useState(false);
   const handleScroll=() => {
     const offset=window.scrollY;
     if(offset > 200 ){

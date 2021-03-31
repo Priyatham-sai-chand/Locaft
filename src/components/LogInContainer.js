@@ -5,7 +5,6 @@ import Login from './Login';
 import Footer from './Footer';
 import styled, {css} from 'styled-components';
 
-import '../login_reg.css';
 const BaseApp = styled.div`
   display: flex;
   color: white;

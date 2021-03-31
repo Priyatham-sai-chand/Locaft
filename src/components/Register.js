@@ -35,6 +35,7 @@ const TermsLink = styled.a`
   const [phonenumber, setPhonenumber] = useState();
   const [username, setUsername] = useState();
   const [error, setError] = useState();
+  const [contains8C, setContains8C] = useState(false);
 
   const { setUserData } = useContext(UserContext);
   const history = useHistory();
@@ -44,6 +45,12 @@ const TermsLink = styled.a`
 
     try {
       const newUser = { username,email,phonenumber,password};
+      const isEmpty = !Object.values(newUser).some(x => (x !== null && x !== ''));
+        console.log("isempty: " + isEmpty )
+      if(isEmpty){
+        setError("Not all Fields are entered")
+        return;
+      }
       await Axios.post("https://server-locaft.herokuapp.com/users/register", newUser);
       const loginRes = await Axios.post("https://server-locaft.herokuapp.com/users/login", {
         email,
@@ -59,6 +66,14 @@ const TermsLink = styled.a`
       return err.response.data.msg && setError(err.response.data.msg);
     }
   };
+  const validatePassword = () => {
+
+ if(password.length >= 8) {
+   setContains8C(true)
+    setError(null)
+ }
+ else { setContains8C(false); setError("The Password needs to be atleast 8 characters") };
+  }
 
 
   return (
@@ -69,21 +84,22 @@ const TermsLink = styled.a`
       <form className="FormFields" onSubmit={submit}>
         <FormField>
           <FormLabel htmlFor="name">UserName</FormLabel>
-          <FormInput 
-          type="text" 
-          id="name" 
-          placeholder="Enter your full name" 
-          onChange= { (e) => setUsername(e.target.value)}
+          <FormInput
+            type="text"
+            id="name"
+            placeholder="Enter your full name"
+            onChange={(e) => setUsername(e.target.value)}
           />
         </FormField>
         <FormField>
           <FormLabel htmlFor="password">Password</FormLabel>
-          <FormInput 
-          type="password" 
-          id="password" 
-          className="FormField__Input" 
-          placeholder="Enter your password"
-          onChange= { (e) => setPassword(e.target.value)}
+          <FormInput
+            type="password"
+            id="password"
+            className="FormField__Input"
+            placeholder="Enter your password"
+            onChange={(e) => setPassword(e.target.value)}
+            onKeyUp={validatePassword}
           />
         </FormField>
         <FormField>
@@ -94,7 +110,6 @@ const TermsLink = styled.a`
           className="FormField__Input" 
           placeholder="Enter your email"
           onChange= { (e) => setEmail(e.target.value)}
-          
           />
         </FormField>
         <FormField>
@@ -102,15 +117,15 @@ const TermsLink = styled.a`
           <FormInput
           type="number" 
           id="phonenumber" 
-          className="FormField__Input" 
-          placeholder="Enter your Phone no. (+91)"
-          onChange= { (e) => setPhonenumber(parseInt( e.target.value,10))}
-            />
+            className="FormField__Input"
+            placeholder="Enter your Phone no. (+91)"
+            onChange={(e) => setPhonenumber(parseInt(e.target.value, 10))}
+          />
         </FormField>
 
         <FormField>
           <CheckBoxLabel>
-            <CheckBox type="checkbox" name="hasAgreed" required="true" /> I agree all statements in <a href="/" className="FormField__TermsLink">terms of service</a>
+            <CheckBox type="checkbox" name="hasAgreed" /> I agree all statements in <a href="/" className="FormField__TermsLink">terms of service</a>
           </CheckBoxLabel>
         </FormField>
 
