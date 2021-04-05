@@ -1,9 +1,12 @@
-import React from 'react';
-import { BrowserRouter, Route, NavLink, Switch,withRouter } from 'react-router-dom';
+import React, {useContext} from 'react';
+import { useHistory,BrowserRouter, Route, NavLink, Switch,withRouter } from 'react-router-dom';
 import Register from './Register';
 import Login from './Login';
 import Footer from './Footer';
 import styled, {css} from 'styled-components';
+import {Button} from './miscellaneous/Styles';
+import UserContext from "../context/UserContext";
+import {logout} from "./NavBar"
 
 const BaseApp = styled.div`
   display: flex;
@@ -66,7 +69,8 @@ const TextContainer = styled.p`
 `;
 
 const BannerText = styled.p`
-  color:white;
+
+  color:${props => props.colour ? props.colour : "white"};
   font-size: 1.25em;
   font-style:italic;
 
@@ -137,8 +141,9 @@ const FormTitle = styled.div`
 
 `;
 const LogInContainer = (props) => {
+  const { userData, setUserData } = useContext(UserContext);
+  const history = useHistory();
     return (
-        <BrowserRouter basename="user">
         <BaseApp>
           <AppSide>
             <PlaneContainer>
@@ -154,6 +159,8 @@ const LogInContainer = (props) => {
               </SkyContainer>
           </AppSide>
           <AppForm>
+            {!userData.user ? (
+        <BrowserRouter basename="user">
               <PageSwitcherContainer>
                 <PageSwitcher to="/login" >Sign In</PageSwitcher>
                 <PageSwitcher to="/register" >Sign Up</PageSwitcher>
@@ -165,15 +172,44 @@ const LogInContainer = (props) => {
             <Route path="/register" component={Register} />
             <Route path="/login" component={Login} />
           </Switch>
-          <p>
+        </BrowserRouter>
+       ) :  (
+         
+              <React.Fragment>
+              <BannerText colour="black">Log in successful.</BannerText>
+              <Button
+                  type="submit"
+                  radiuscolor="#009578"
+                  textcolor="#009578"
+                  hovercolor="#009578"
+                  hovertextcolor="white"
+                  onClick={() => { history.push("/")}}
+                  
+             >home</Button> 
+              &nbsp;
+              <Button
+                  type="submit"
+                  radiuscolor="#009578"
+                  textcolor="#009578"
+                  hovercolor="#009578"
+                  hovertextcolor="white"
+                  onClick={() => {logout(setUserData); history.push("/")}}
+                  
+             >Logout</Button> 
+              
+              </React.Fragment>
 
-          </p>
+            
+            )}
+
+
+         
 
           </AppForm>
 
         </BaseApp>
-          <Footer background="blue"/>
-        </BrowserRouter>
+        
+          
     );
   }
 

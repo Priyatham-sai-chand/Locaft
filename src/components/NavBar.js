@@ -89,18 +89,17 @@ const Linker = styled(Link)`
 
 `;
 
-
-export default function NavBar() {
-  const { userData, setUserData } = useContext(UserContext);
-  const [scrolled, setScrolled] = useState(); 
-  const logout = () => {
+export  const logout = (setUserData) => {
     setUserData({
       token: undefined,
       user: undefined,
     });
     localStorage.setItem("auth-token", "");
   };
-  
+
+export default function NavBar() {
+  const [scrolled, setScrolled] = useState(); 
+const { userData, setUserData } = useContext(UserContext);
   
   const handleScroll=() => {
     const offset=window.scrollY;
@@ -129,7 +128,7 @@ export default function NavBar() {
           <ListElement><Anchor href="/#footer">Contact us</Anchor></ListElement>
           {userData.user ? (
             <React.Fragment>
-            <ListElement><Linker onClick={logout}>{userData.user.username}</Linker></ListElement>
+            <ListElement><Linker onClick={() => logout(setUserData)}>{userData.user.username}</Linker></ListElement>
             </React.Fragment>
             
           ) : (
