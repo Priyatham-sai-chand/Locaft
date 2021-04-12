@@ -1,4 +1,4 @@
-import React, {useContext,useEffect } from 'react';
+import React, { useState,useContext,useEffect } from 'react';
 import { Link } from "react-router-dom";
 import  UserContext  from "../context/UserContext";
 import styled,{ css } from 'styled-components';
@@ -15,7 +15,7 @@ const Header = styled.header`
   justify-content: space-between;
   align-items: center;
   transition: 0.6s;
-  padding: 10px 15px;
+  padding: 5px 15px;
   z-index: 100000;
   font-family: Ubuntu;
 
@@ -89,20 +89,18 @@ const Linker = styled(Link)`
 
 `;
 
-
-export default function NavBar() {
-  const { userData, setUserData } = useContext(UserContext);
-  
-  const logout = () => {
+export  const logout = (setUserData) => {
     setUserData({
       token: undefined,
       user: undefined,
     });
     localStorage.setItem("auth-token", "");
   };
+
+export default function NavBar() {
+  const [scrolled, setScrolled] = useState(); 
+const { userData, setUserData } = useContext(UserContext);
   
-  
-    const [scrolled,setScrolled]=React.useState(false);
   const handleScroll=() => {
     const offset=window.scrollY;
     if(offset > 200 ){
@@ -126,11 +124,11 @@ export default function NavBar() {
         <List>
           <ListElement><Anchor href="/">Home</Anchor></ListElement>
           <ListElement><Anchor href="/#about-us">About</Anchor></ListElement>
-          <ListElement><Anchor href="/#services">Services</Anchor></ListElement>
+          <ListElement><Anchor href="/pricing">Pricing</Anchor></ListElement>
           <ListElement><Anchor href="/#footer">Contact us</Anchor></ListElement>
           {userData.user ? (
             <React.Fragment>
-            <ListElement><Linker onClick={logout}>{userData.user.username}</Linker></ListElement>
+            <ListElement><Linker onClick={() => logout(setUserData)}>{userData.user.username}</Linker></ListElement>
             </React.Fragment>
             
           ) : (

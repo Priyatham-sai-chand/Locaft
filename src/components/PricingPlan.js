@@ -3,9 +3,9 @@ import NavBar from './NavBar';
 import Footer from './Footer';
 import styled,{css} from 'styled-components';
 import UserContext from "../context/UserContext";
-import Payment from "./Payment";
 import { useHistory } from "react-router-dom";
 import Axios from 'axios';
+import { Button } from './miscellaneous/Styles';
 
 const size = {
   mobileS: '320px',
@@ -166,36 +166,12 @@ const Actions = styled.div`
     flex-direction: column;
 
 `;
-const Button = styled.a`
-
-    display: inline-block;
-    margin: 15px auto;
-    padding: 8px 20px;
-    color: #009578;
-    background: #ffffff;
-    border-radius: 5px;
-    border: 1px solid #009578;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-    font-weight: bold;
-    text-align: center;
-    cursor: pointer;
-
-    &:hover {
-
-    background: #009578;
-    color: white !important;
-
-    }
-
-
-`;
 
 const Heading = styled.h1`
-    color: #66bfbf;
+    color: #309975;
     margin-left: 20px;
     margin-top: 100px;
-
+    font-weight: bold;
 
 `;
 
@@ -210,6 +186,7 @@ const submit = async (props) => {
     props.preventDefault();
     try {
         const id = userData.user.id;
+        console.log("Id " + id)
         const pricingRes = await Axios.put(
             "https://server-locaft.herokuapp.com/users/update", {
             id,
@@ -312,7 +289,13 @@ const submit = async (props) => {
 
                 </PricingPlanContainer>
                 <PricingPlanContainer>
-                            <Button onClick={() =>  setPurchased(true) }>Purchase</Button>
+                            <Button
+                                radiuscolor="#009578"
+                                textcolor="#009578"
+                                hovercolor="#009578"
+                                hovertextcolor="white"
+                                onClick={() => setPurchased(true)}
+                            >Purchase</Button>
                 </PricingPlanContainer>
                 </React.Fragment>
              ): (

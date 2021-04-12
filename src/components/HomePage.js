@@ -11,6 +11,9 @@ import { Bullseye } from "@styled-icons/fa-solid";
 import { StyledIconBase } from '@styled-icons/styled-icon'
 import Sidebar from './Sidebar';
 
+const Body = styled.div`
+`;
+
 const IconStyler = styled.div`
   ${StyledIconBase} {
     width: ${props => props.width ? props.width : 26}px;
@@ -93,8 +96,7 @@ export default function HomePage() {
 
   return (
 
-    <div className="HomePage">
-      <NavBar />
+    <Body>
 
       <ColoredSection >
 
@@ -228,7 +230,8 @@ export default function HomePage() {
         </ContainerPadded>
       
       </ColoredSection>
-      <Sidebar />
+      <Sidebar logout="{logout}" />
+      <NavBar />
 
       <div id="footer">
         <Footer />
@@ -236,15 +239,7 @@ export default function HomePage() {
 
 
 
-    </div>
-
-
-
-
-
-
-
-
+    </Body>
   );
 }
 
