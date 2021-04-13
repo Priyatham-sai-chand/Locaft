@@ -6,13 +6,13 @@ import { Link, useHistory, withRouter } from "react-router-dom";
 
 import {Button, FormCenter, FormField, FormLabel, FormInput, FormLink  } from './miscellaneous/Styles'
 const Login = () => {
-    
+
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [error, setError] = useState();
 
  const { userData,setUserData } = useContext(UserContext);
-  
+
   const history = useHistory();
 
   const submit = async (e) => {
@@ -23,6 +23,7 @@ const Login = () => {
         "https://server-locaft.herokuapp.com/users/login",
         loginUser
       );
+      console.dir("login res " + loginRes.data.user);
       setUserData({
         token: loginRes.data.token,
         user: loginRes.data.user,
@@ -32,9 +33,9 @@ const Login = () => {
     } catch (err) {
       err.response.data.msg && setError(err.response.data.msg);
     }
-  }; 
+  };
         return (
-          
+
         <FormCenter>
           {error && (
         <ErrorNotice message={error} clearError={() => setError(undefined)} />
@@ -51,7 +52,7 @@ const Login = () => {
               </FormField>
 
               <FormField>
-  
+
               <Button
                   type="submit"
                   radiuscolor="#009578"
@@ -61,7 +62,7 @@ const Login = () => {
                   >Sign In</Button> <FormLink exact to="/register" className="FormField__Link">Not a member?</FormLink>
               </FormField>
             </form>
-            
+
           </FormCenter>
         );
     }

@@ -19,15 +19,16 @@ export default function App() {
   useEffect(() => {
     const checkLoggedIn = async () => {
       let token = localStorage.getItem("auth-token");
+      console.log("app js " + token);
       if (token == null) {
         localStorage.setItem("auth-token","");
         token ="";
       }
       const tokenRes = await Axios.post(
         "https://server-locaft.herokuapp.com/users/tokenIsValid",
-        null, 
+        null,
         {headers: {"x-auth-token": token }}
-        
+
         );
         if (tokenRes.data) {
           const userRes = await Axios.get("https://server-locaft.herokuapp.com/users/",
@@ -40,7 +41,7 @@ export default function App() {
         }
 
     };
-    
+
 
     checkLoggedIn();
 
@@ -64,7 +65,7 @@ export default function App() {
           </UserContext.Provider>
         </BrowserRouter>
 
-        
+
       </div>
       </>
 

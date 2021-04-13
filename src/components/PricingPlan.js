@@ -39,8 +39,8 @@ const PricingPlanContainer = styled.div`
     }
 
 
-    
-    
+
+
 `;
 
 const Radio = styled.input`
@@ -75,10 +75,10 @@ const Pricing = styled.section`
         box-shadow: 0 0 15px rgba(0,0,0,0.4);
         transform: scale(1.05);
 
-    
+
     `:css``};
-    
-     
+
+
 `;
 
 const Text = styled.p`
@@ -123,7 +123,7 @@ const SpecialText = styled.div`
     color: #ffffff;
     background: #007c64;
     box-shadow: 0 0 10px rgba(0,0,0,0.2) inset;
-    
+
     &, ${Title}{
     margin: 0;
     text-align: center;
@@ -138,7 +138,7 @@ const Description = styled.div`
 
 `;
 const List = styled.ul`
-    padding: 0; 
+    padding: 0;
     margin: 0;
     text-align: left;
 `;
@@ -148,7 +148,7 @@ const Feature = styled.li`
     position: relative;
     font-size: 0.9 em;
     &:not(:last-child) {
-        margin-bottom: 2em; 
+        margin-bottom: 2em;
     }
 
     &::before {
@@ -191,9 +191,9 @@ const submit = async (props) => {
             "https://server-locaft.herokuapp.com/users/update", {
             id,
             pricing
-                
+
         }
-        
+
         );
     } catch (err) {
         console.log(err);
@@ -205,7 +205,7 @@ const submit = async (props) => {
             <div className="body">
                 <NavBar />
                { !purchased ? (
-                
+
                <React.Fragment>
                 <Heading>Pricing Plan</Heading>
                 <PricingPlanContainer onChange={event => setPricing(event.target.value)}>
@@ -316,7 +316,7 @@ const submit = async (props) => {
             </div>
 
         )
-    
+
 
 }
 export default PricingPlan;

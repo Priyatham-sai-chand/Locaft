@@ -27,7 +27,7 @@ const Header = styled.header`
   display: fixed;
   `:css``};
 
-  
+
    & .logo {
   font-family: "Ubuntu";
   font-size: 2rem;
@@ -50,7 +50,6 @@ const List = styled.ul`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 13px 50px;
   flex-wrap: nowrap;
   margin-bottom: 0px !important;
 
@@ -76,7 +75,7 @@ const Anchor = styled.a`
 
 
 
-    
+
 `;
 const Linker = styled(Link)`
 	color:#fff;
@@ -98,9 +97,9 @@ export  const logout = (setUserData) => {
   };
 
 export default function NavBar() {
-  const [scrolled, setScrolled] = useState(); 
+  const [scrolled, setScrolled] = useState();
 const { userData, setUserData } = useContext(UserContext);
-  
+
   const handleScroll=() => {
     const offset=window.scrollY;
     if(offset > 200 ){
@@ -115,11 +114,11 @@ const { userData, setUserData } = useContext(UserContext);
   })
 
 
-  
+
   return (
     <div className="navbar">
       <Header sticky = {scrolled} >
-       
+
         <Anchor href="/" className="logo">locaft</Anchor>
         <List>
           <ListElement><Anchor href="/">Home</Anchor></ListElement>
@@ -130,7 +129,7 @@ const { userData, setUserData } = useContext(UserContext);
             <React.Fragment>
             <ListElement><Linker onClick={() => logout(setUserData)}>{userData.user.username}</Linker></ListElement>
             </React.Fragment>
-            
+
           ) : (
               <React.Fragment>
               <ListElement><Linker  to="/user/register">Register</Linker></ListElement>
