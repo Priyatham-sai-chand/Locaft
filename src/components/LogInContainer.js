@@ -9,29 +9,48 @@ import UserContext from "../context/UserContext";
 import {logout} from "./NavBar"
 import { GoogleLogin } from 'react-google-login';
 import Axios from "axios";
+import { Device} from './miscellaneous/Responsive';
 
 const BaseApp = styled.div`
   display: flex;
   color: white;
   height:100vh;
+  flex-direction: column;
+
+@media ${Device.laptop} {
+  flex-direction: row;
+}
 
 `;
 
 const AppSide = styled.div`
-  width: 50%;
   background-color: #66bfbf;
  display: grid;
   grid-template-columns: repeat(auto-fit, 300px);
   justify-content: center;
   align-items: center;
+  height: 100vh;
+  width: 100vw;
+
+  @media ${Device.laptop} {
+    width: 50%;
+  }
+
+
+
 
 `;
 const AppForm = styled.div`
 
-  width: 50%;
   background-color: #ffffff;
   padding: 25px 40px;
-  overflow: auto;
+  height: 100vh;
+  width: 100vw;
+
+  @media ${Device.laptop} {
+    width: 50%;
+    overflow:auto
+  }
 
 `;
 const PageSwitcherContainer = styled.div`
