@@ -186,7 +186,7 @@ const responsePassGoogle = async (response) => {
     const idToken = response.tokenId;
   console.log("id token" + idToken);
   const googleres = await Axios.post(
-   "http://server-locaft.herokuapp.com/users/googlelogin",{
+   "https://server-locaft.herokuapp.com/users/googlelogin",{
      idToken: idToken
    }
 
