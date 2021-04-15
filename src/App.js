@@ -11,6 +11,8 @@ import NavBar from "./components/NavBar";
 import FillingDetails from "./components/FillingDetails";
 import Error404 from './components/Error404';
 import Payment from './components/Payment'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 export default function App() {
   const [userData, setUserData ] = useState({
     token: undefined,
