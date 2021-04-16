@@ -5,11 +5,16 @@ import Footer from "./Footer";
 import styled from 'styled-components';
 
 const CardList = styled.div`
-    z-index: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+    display:flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin: 45px 15px;
+
+    flex-direction: row;
+
+
+
 `;
 export default function Options() {
 
@@ -33,7 +38,7 @@ export default function Options() {
                 content.innerText = `Step Number ${currentStep}`;
 
             });
-        
+
 
 
             previousBtn.addEventListener('click', () => {
@@ -46,12 +51,12 @@ export default function Options() {
                 }
                 content.innerText = `Step Number ${currentStep}`;
             });
-        
+
 
             finishBtn.addEventListener('click', () => {
                 window.location.reload();
             });
-        
+
 
     })
 
@@ -76,14 +81,17 @@ export default function Options() {
                     <div className="bullet ">4</div>
                 </div>
             </div>
-            
-            
-                <div id="main">
+
+
                 <p id="content" className="text-center">Step Number 1</p>
+                <div id="main">
                 <button id="previousBtn" >Previous</button>
                 <button id="nextBtn">Next</button>
                 <button id="finishBtn" >Finish</button>
             </div>
+            <CardList>
+            <Card img="skyscraper.png"/>
+            </CardList>
             <Footer />
         </div>
     )

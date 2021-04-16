@@ -4,7 +4,7 @@ import Lottie from 'react-lottie';
 import animationData from '../lottie/box_error';
 
 const Body = styled.div`
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,300,500);
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,100,300,500');
   font-size: 100%;
   line-height: 1.5;
   font-family: "Roboto", sans-serif;
@@ -13,7 +13,7 @@ const Body = styled.div`
   align-items: center;
 `;
 const Container = styled.div`
- 
+
   position: relative;
   background-color: #66bfbf;
   text-align: center;
@@ -25,8 +25,8 @@ const Heading = styled.h1`
   color: white;
   font-size: 4rem;
   margin: 0px;
-  
- 
+
+
   `;
 const defaultOptions = {
       loop: true,
@@ -35,7 +35,7 @@ const defaultOptions = {
       rendererSettings: {
         preserveAspectRatio: "xMidYMid slice"
       }
-    }; 
+    };
 
 const Error404 = () => {
   return (
@@ -46,8 +46,8 @@ const Error404 = () => {
        <Lottie height={500} width={500} options={defaultOptions} />
        </Container>
 
-    
-      
+
+
     </Body>
 
 

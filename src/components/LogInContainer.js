@@ -206,7 +206,8 @@ const responsePassGoogle = async (response) => {
 }
     return (
         <BaseApp>
-  <meta name="google-signin-client_id" content={`${process.env.REACT_APP_CLIENT_ID}.apps.googleusercontent.com`} />
+  <meta name="google-signin-client_id"
+  content={`${process.env.REACT_APP_CLIENT_ID}.apps.googleusercontent.com`} />
           <AppSide>
             {!hasLogged ? (
             <GoogleLogin

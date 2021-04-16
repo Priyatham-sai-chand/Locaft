@@ -9,13 +9,13 @@ const Tick = styled.input.attrs(props => ({
     name: "radiobtn"
 
 }))`
-    
+
 `;
 const Overlay = styled.div`
   position: block;
   bottom: 0;
   background: rgb(0, 0, 0);
-  background: rgba(0, 0, 0, 0.5); 
+  background: rgba(0, 0, 0, 0.5);
   color: #f1f1f1;
   width: 100%;
   transition: .5s ease;
@@ -35,18 +35,13 @@ const Card = styled.div`
   box-shadow: 4px 4px 5px 5px rgba(0,0,0,0.01), -2px -2px 5px 5px rgba(0,0,0,0.22);
   cursor: pointer;
   transition: 0.4s;
-  
-
-  & .card_image {
-      width: inherit;
-      height:inherit;
-      
-  }
+  position: relative;
 
    & .card_image  ${Image}  {
       width: inherit;
       height:inherit;
       border-radius: 40px;
+      box-shadow: none;
       object-fit:cover;
   }
 
@@ -58,19 +53,11 @@ const Card = styled.div`
   font-size: 30px;
   margin-top: -80px;
   height: 40px;
+  box-shadow: none;
+  color: #fff;
 }
 
 
-& .card_title {
-  text-align: center;
-  border-radius: 0px 0px 40px 40px;
-  font-family: sans-serif;
-  font-weight: bold;
-  font-size: 30px;
-  margin-top: -80px;
-  height: 40px;
-  color: white !important;
-}
 & .card_tick {
     content:'asdf';
     border-radius: 0px 0px 40px 40px;
@@ -80,11 +67,11 @@ const Card = styled.div`
 }
 &:hover {
 
-box-shadow: 2px 2px 5px 9px rgba(0,0,0,0.22), -2px -2px 5px 5px rgba(0,0,0,0.11);
-;
-    
+box-shadow: 2px 2px 5px 5px rgba(0,0,0,0.22), -2px -2px 5px 5px rgba(0,0,0,0.11);
+
+
 }
-&:hover ${Overlay}{
+&:hover .overlay{
     opacity: 1;
 
 }
@@ -95,15 +82,15 @@ box-shadow: 2px 2px 5px 9px rgba(0,0,0,0.22), -2px -2px 5px 5px rgba(0,0,0,0.11)
 const HouseCard = (props) => {
 
     return (
-        
-            
+
+
         <Card>
-            <Card className="card_image"> <Image src={props.img} alt="asdf" /></Card> 
+            <Card className="card_image"> <Image src={props.img} alt="asdf" /></Card>
             <Card className="card_title">
                 <p>Card Title</p>
             </Card>
         </Card>
-        
+
 
     );
 
