@@ -20,7 +20,7 @@ const IconStyler = styled.div`
     height: ${props => props.height ? props.height : 26};
     color: ${ props => props.color ? props.color: "white"};
 
-    
+
   }
 
 
@@ -32,12 +32,16 @@ const defaultOptions = {
       rendererSettings: {
         preserveAspectRatio: "xMidYMid slice"
       }
-    }; 
+    };
 
-const ColoredSection = styled.section`  
+const ColoredSection = styled.section`
 
   background-color:#66bfbf;
   color: #fff;
+    background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 
 
 `;
@@ -73,13 +77,13 @@ const BigHeading = styled.h1`
   font-family: "Ubuntu";
   color: white;
   font-weight: bold;
-  
+
 `;
 const FeatureTitle = styled.h3`
   font-size: 1.5rem;
   color:#8f8f8f;
   align-self: center;
-          
+
 `;
 const TestimonalTitle = styled.h2`
   font-size: 3rem;
@@ -106,7 +110,7 @@ export default function HomePage() {
 
             <FeatureCol lg="6">
               <BigHeading>Adapt to a new place easy peasy.</BigHeading>
-            
+
               <Button variant="info" onClick={() => {
                 history.push("/user/login")
               }} >Log In</Button> &nbsp;
@@ -116,7 +120,7 @@ export default function HomePage() {
             </FeatureCol>
 
             <FeatureCol lg="6">
-              
+
               <Lottie options= { defaultOptions } />
             </FeatureCol>
 
@@ -228,7 +232,7 @@ export default function HomePage() {
           </FeatureCol>
           </Row>
         </ContainerPadded>
-      
+
       </ColoredSection>
       <Sidebar logout="{logout}" />
       <NavBar />
