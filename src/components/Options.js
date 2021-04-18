@@ -11,6 +11,8 @@ const CardList = styled.div`
   grid-template-rows: repeat(auto-fill,minmax(200px,1fr));
   grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
   grid-gap: 30px;
+  align-items: center;
+  justify-items: center;
 
 
 
@@ -91,12 +93,12 @@ export default function Options() {
                 <button id="finishBtn" >Finish</button>
             </div>
             <CardList>
+            <Card img="skyscraper.png" title="cardtitle" desc="description"/>
             <Card img="skyscraper.png"/>
             <Card img="skyscraper.png"/>
             <Card img="skyscraper.png"/>
-            <Card img="skyscraper.png"/>
-            <Card img="skyscraper.png"/>
-            <Card img="skyscraper.png"/>
+            <Card img="indigo.jpg"/>
+            <Card img="locaft.png"/>
             <Card img="skyscraper.png"/>
             <Card img="skyscraper.png"/>
             <Card img="skyscraper.png"/>

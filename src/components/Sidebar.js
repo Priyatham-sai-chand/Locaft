@@ -13,7 +13,6 @@ const StyledMenu = styled.nav`
   height: 100vh;
   text-align: left;
   padding: 2rem;
-  position: absolute;
   top: 0;
   left: 0;
   transition: transform 0.3s ease-in-out;
@@ -43,11 +42,11 @@ const StyledMenu = styled.nav`
   }
 `
 
-const Menu = (props) => {
+const Menu = ({open, setOpen}) => {
   const { userData, setUserData } = useContext(UserContext);
   return (
-    <StyledMenu open={props.open}>
-      <a href="/#about-us">
+    <StyledMenu open={open} >
+      <a href="/#about-us"onClick={() => setOpen(false)}>
         <span role="img" aria-label="about us">💁🏻‍♂️</span>
         About us
       </a>
@@ -55,18 +54,18 @@ const Menu = (props) => {
         <span role="img" aria-label="pricing">💸</span>
         Pricing
         </a>
-      <a href="/#footer">
+      <a href="/#footer"onClick={() => setOpen(false)}>
         <span role="img" aria-label="contact us">📩</span>
         Contact
         </a>
-        
+
       {userData.user ? (
       <Link >
         <span role="img" aria-label="{userData.user.username}">📩</span>
         {userData.user.username}
         </Link>
-            
-        
+
+
           ):(
 <React.Fragment>
       <a href="/user/register">
@@ -79,7 +78,7 @@ const Menu = (props) => {
         </a>
 </React.Fragment>
         )
-      
+
       }
     </StyledMenu>
   )
@@ -151,13 +150,13 @@ const Sidebar = (props) => {
   const node = React.useRef();
   return (
     <div>
-    
+
       <div ref={node}>
         <Burger open={open} setOpen={setOpen} />
         <Menu open={open} setOpen={setOpen} logout={props.logout} />
       </div>
     </div>
-  )  
+  )
 }
 
 const useOnClickOutside = (ref, handler) => {

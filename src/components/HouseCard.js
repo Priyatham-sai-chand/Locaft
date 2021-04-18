@@ -65,11 +65,8 @@ const Card = styled.div`
   cursor: pointer;
   transition: 0.4s;
   position: relative;
-  background-image: url("skyscraper.png");
-  object-fit: cover;
-
-
-
+  background-image: url("${props => props.img ? props.img : "vrl.jpg"}");
+  background-size: cover;
 
   &:hover ${Overlay} {
     background-color: rgba(0,0,0,0.5);
@@ -88,13 +85,11 @@ const Card = styled.div`
 const HouseCard = (props) => {
 
     return (
-
-
-        <Card>
+        <Card img = {props.img}>
             <Overlay>
                 <Hover>
-                    <CardTitle>asdf</CardTitle>
-                    <Paragraph>zxcv</Paragraph>
+                    <CardTitle>{props.title ? props.title : "asdf"}</CardTitle>
+                    <Paragraph>{props.desc ? props.desc: "zxcv"}</Paragraph>
                 </Hover>
             </Overlay>
         </Card>
