@@ -3,6 +3,11 @@ import styled from 'styled-components';
 
 const Image = styled.img`
     display:block;
+    width: inherit;
+    height: inherit;
+      border-radius: 40px;
+      box-shadow: none;
+      object-fit:cover;
 `;
 const Tick = styled.input.attrs(props => ({
     type: "radio",
@@ -11,70 +16,71 @@ const Tick = styled.input.attrs(props => ({
 }))`
 
 `;
+const Hover = styled.div`
+    height: inherit;
+    width: inherit;
+    opacity: 0;
+    transition: opacity 350ms ease;
+    position: absolute;
+`;
 const Overlay = styled.div`
-  position: block;
-  bottom: 0;
-  background: rgb(0, 0, 0);
-  background: rgba(0, 0, 0, 0.5);
-  color: #f1f1f1;
-  width: 100%;
-  transition: .5s ease;
-  opacity:0;
-  color: white;
-  font-size: 20px;
-  padding: 20px;
-  text-align: center;
-  margin-top: -90px;
+  height: inherit;
+  width: inherit;
+  transition: black 350ms ease;
+  background-color: transparent;
+  border-radius: 40px;
+  position: absolute;
+  display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+`;
+const CardTitle = styled.h2`
+  margin-top: 10px;
+  margin-left: 10px;
+  font-family: sans-serif;
+  box-shadow: none;
+  color: #fff;
+
+
+
+
 `;
 
+const Paragraph = styled.p`
+
+  margin-top: 10px;
+  margin-left: 10px;
+color: #fff;
+
+
+`;
 
 const Card = styled.div`
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 200px;
   border-radius: 40px;
   box-shadow: 4px 4px 5px 5px rgba(0,0,0,0.01), -2px -2px 5px 5px rgba(0,0,0,0.22);
   cursor: pointer;
   transition: 0.4s;
   position: relative;
+  background-image: url("skyscraper.png");
+  object-fit: cover;
 
-   & .card_image  ${Image}  {
-      width: inherit;
-      height:inherit;
-      border-radius: 40px;
-      box-shadow: none;
-      object-fit:cover;
+
+
+
+  &:hover ${Overlay} {
+    background-color: rgba(0,0,0,0.5);
   }
-
-  & .card_title {
-  text-align: center;
-  border-radius: 0px 0px 40px 40px;
-  font-family: sans-serif;
-  font-weight: bold;
-  font-size: 30px;
-  margin-top: -80px;
-  height: 40px;
-  box-shadow: none;
-  color: #fff;
-}
-
-
-& .card_tick {
-    content:'asdf';
-    border-radius: 0px 0px 40px 40px;
-    margin-top: -90px;
-    height: 40px;
-    color: white;
-}
-&:hover {
-
-box-shadow: 2px 2px 5px 5px rgba(0,0,0,0.22), -2px -2px 5px 5px rgba(0,0,0,0.11);
-
-
-}
-&:hover .overlay{
+  &:hover ${CardTitle}, :hover ${Paragraph}{
+    transform: translate3d(0,0,0);
+  }
+  &:hover ${Hover}{
     opacity: 1;
 
-}
+  }
 `;
 
 
@@ -85,10 +91,12 @@ const HouseCard = (props) => {
 
 
         <Card>
-            <Card className="card_image"> <Image src={props.img} alt="asdf" /></Card>
-            <Card className="card_title">
-                <p>Card Title</p>
-            </Card>
+            <Overlay>
+                <Hover>
+                    <CardTitle>asdf</CardTitle>
+                    <Paragraph>zxcv</Paragraph>
+                </Hover>
+            </Overlay>
         </Card>
 
 

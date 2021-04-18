@@ -5,13 +5,13 @@ import Footer from "./Footer";
 import styled from 'styled-components';
 
 const CardList = styled.div`
-  display:flex;
-  justify-content: space-around;
-  align-items: stretch;
+  display: grid;
   position: relative;
-  margin: auto;
-  flex-direction: row;
-  flex-wrap: wrap;
+  margin: 15px;
+  grid-template-rows: repeat(auto-fill,minmax(200px,1fr));
+  grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+  grid-gap: 30px;
+
 
 
 
@@ -91,6 +91,11 @@ export default function Options() {
                 <button id="finishBtn" >Finish</button>
             </div>
             <CardList>
+            <Card img="skyscraper.png"/>
+            <Card img="skyscraper.png"/>
+            <Card img="skyscraper.png"/>
+            <Card img="skyscraper.png"/>
+            <Card img="skyscraper.png"/>
             <Card img="skyscraper.png"/>
             <Card img="skyscraper.png"/>
             <Card img="skyscraper.png"/>
